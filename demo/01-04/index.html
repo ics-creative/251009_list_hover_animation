@@ -7,25 +7,45 @@
   <link href="../base.css" rel="stylesheet" type="text/css"/>
   <style>
     .hover-01-04-list {
+      position: relative;
       gap: 8px;
     }
 
-    .hover-01-04-list::before {
+    .hover-01-04-list::before,
+    .hover-01-04-list::after {
       content: "";
       display: inline-block;
       width: 16px;
       height: 16px;
-      background-image: url("images/heart-emoji.png");
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
-      transition: opacity 0.2s, transform 0.2s;
+      transition: opacity .2s, transform .2s;
     }
 
-    /* ホバーでアイコンを変化させる */
-    .hover-01-04-list:hover::before {
-      transform: scale(1.4);
+    /* 1つ目のアイコン */
+    .hover-01-04-list::before {
+      background-image: url("images/heart-emoji.png");
+      opacity: 1;
+    }
+
+    /* 2つ目のアイコン */
+    .hover-01-04-list::after {
+      position: absolute;
+      left: 0;
+      transform: scale(1);
       background-image: url("images/heart-dot.svg");
+      opacity: 0;
+    }
+
+    /* ホバー時にアイコンのopacityを切り替える */
+    .hover-01-04-list:hover::before {
+      opacity: 0;
+    }
+
+    .hover-01-04-list:hover::after {
+      transform: scale(1.4);
+      opacity: 1;
     }
   </style>
 </head>
