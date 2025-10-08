@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>灯りがつく</title>
+  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <style>
+    body {
+      background-color: #222222;
+    }
+
+    .hover-01-06 {
+      gap: 40px;
+    }
+
+    .hover-01-06-link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: normal;
+      color: #ffffff;
+    }
+
+    .hover-01-06-link::after {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: -6px;
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(50% 50% at 50% 50%, #ffdd40 0%, rgba(178, 230, 234, 0) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      mix-blend-mode: hard-light;
+    }
+
+    .hover-01-06-link:hover::after {
+      opacity: 1;
+    }
+
+    .hover-01-06-img {
+      width: auto;
+      height: 16px;
+    }
+
+    .hover-01-06-link-light::after {
+      top: -7px;
+      left: -9px;
+    }
+
+    .hover-01-06-link-light .hover-01-06-img {
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+
+<ul class="hover-01-06">
+  <li class="hover-01-06-list">
+    <a class="hover-01-06-link" href="#">
+      <img alt="" class="hover-01-06-img" src="images/icon-star.svg">
+      わたしたち
+    </a>
+  </li>
+  <li class="hover-01-06-list">
+    <a class="hover-01-06-link" href="#">
+      <img alt="" class="hover-01-06-img" src="images/icon-star.svg">
+      商品 / サービス
+    </a>
+  </li>
+  <li class="hover-01-06-list">
+    <a class="hover-01-06-link" href="#">
+      <img alt="" class="hover-01-06-img" src="images/icon-star.svg">
+      よくある質問
+    </a>
+  </li>
+  <li class="hover-01-06-list">
+    <a class="hover-01-06-link hover-01-06-link-light" href="#">
+      <img alt="" class="hover-01-06-img" src="images/icon-light.svg">
+      ヒント
+    </a>
+  </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>文字がブレる</title>
+  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <style>
+    .hover-01-03-link {
+      position: relative;
+    }
+
+    .hover-01-03-link::before,
+    .hover-01-03-link::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .hover-01-03-link::before {
+      transform: translateX(10px);
+    }
+
+    .hover-01-03-link::after {
+      transform: translateX(-10px);
+    }
+
+    .hover-01-03-link:hover::before,
+    .hover-01-03-link:hover::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body>
+<ul class="hover-01-03">
+  <li class="hover-01-03-list"><a class="hover-01-03-link" href="#" data-text="HOME">HOME</a></li>
+  <li class="hover-01-03-list"><a class="hover-01-03-link" href="#" data-text="ABOUT US">ABOUT US</a></li>
+  <li class="hover-01-03-list"><a class="hover-01-03-link" href="#" data-text="PRODUCTS">PRODUCTS</a></li>
+  <li class="hover-01-03-list"><a class="hover-01-03-link" href="#" data-text="COMPANY">COMPANY</a></li>
+  <li class="hover-01-03-list"><a class="hover-01-03-link" href="#" data-text="CONTACT">CONTACT</a></li>
+</ul>
+</body>
+</html>

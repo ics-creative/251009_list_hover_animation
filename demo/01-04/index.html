@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>アイコンが変化する</title>
+  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <style>
+    .hover-01-04-list {
+      gap: 8px;
+    }
+
+    .hover-01-04-list::before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-image: url("images/heart-emoji.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    /* ホバーでアイコンを変化させる */
+    .hover-01-04-list:hover::before {
+      transform: scale(1.4);
+      background-image: url("images/heart-dot.svg");
+    }
+  </style>
+</head>
+
+<body>
+<ul class="hover-01-04">
+  <li class="hover-01-04-list"><a class="hover-01-04-link" href="#">HOME</a></li>
+  <li class="hover-01-04-list"><a class="hover-01-04-link" href="#">ABOUT US</a></li>
+  <li class="hover-01-04-list"><a class="hover-01-04-link" href="#">PRODUCTS</a></li>
+  <li class="hover-01-04-list"><a class="hover-01-04-link" href="#">COMPANY</a></li>
+  <li class="hover-01-04-list"><a class="hover-01-04-link" href="#">CONTACT</a></li>
+</ul>
+</body>
+</html>

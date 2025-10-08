@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>アイコンが回転する & 文字がアウトライン化する</title>
+  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+
+    .hover-01-07 {
+      font-family: "Dela Gothic One", sans-serif;
+    }
+
+    .hover-01-07-link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: #000079;
+    }
+
+    .hover-01-07-text {
+      position: absolute;
+      left: 2.2em;
+      font-size: 1.8em;
+    }
+
+    .hover-01-07-numberButton {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 5em;
+      height: 5em;
+      padding-bottom: 2px;
+    }
+
+    .hover-01-07-rotatingSvg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hover-01-07-numberInner {
+      z-index: 1;
+      display: grid;
+      align-items: flex-start;
+      line-height: 1;
+    }
+
+    .hover-01-07-number {
+      padding-bottom: 0.2em;
+      font-size: 1.1em;
+      border-bottom: 0.2em solid #000079;
+    }
+
+    .hover-01-07-link:hover .hover-01-07-text,
+    .hover-01-07-link:hover .hover-01-07-numberButton {
+      color: #ffffff;
+      -webkit-text-stroke: 1px #000079;
+    }
+
+    /* hover で回転 */
+    .hover-01-07-link:hover .hover-01-07-rotatingSvg {
+      animation: rotate 7.0s linear infinite;
+    }
+
+    /* 回転アニメーション */
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+<ul class="hover-01-07">
+  <li class="hover-01-07-list">
+    <a class="hover-01-07-link" href="#">
+      <div class="hover-01-07-numberButton">
+        <img alt="" class="hover-01-07-rotatingSvg" src="images/icon.svg">
+        <span class="hover-01-07-numberInner">No.<span class="hover-01-07-number">01</span></span>
+      </div>
+      <span class="hover-01-07-text">HOME</span>
+    </a>
+  </li>
+  <li class="hover-01-07-list">
+    <a class="hover-01-07-link" href="#">
+      <div class="hover-01-07-numberButton">
+        <img alt="" class="hover-01-07-rotatingSvg" src="images/icon.svg">
+        <span class="hover-01-07-numberInner">No.<span class="hover-01-07-number">02</span></span>
+      </div>
+      <span class="hover-01-07-text">ABOUT</span>
+    </a>
+  </li>
+  <li class="hover-01-07-list">
+    <a class="hover-01-07-link" href="#">
+      <div class="hover-01-07-numberButton">
+        <img alt="" class="hover-01-07-rotatingSvg" src="images/icon.svg">
+        <span class="hover-01-07-numberInner">No.<span class="hover-01-07-number">03</span></span>
+      </div>
+      <span class="hover-01-07-text">SERVICE</span>
+    </a>
+  </li>
+  <li class="hover-01-07-list">
+    <a class="hover-01-07-link" href="#">
+      <div class="hover-01-07-numberButton">
+        <img alt="" class="hover-01-07-rotatingSvg" src="images/icon.svg">
+        <span class="hover-01-07-numberInner">No.<span class="hover-01-07-number">04</span></span>
+      </div>
+      <span class="hover-01-07-text">CONTACT</span>
+    </a>
+  </li>
+</ul>
+</body>
+</html>

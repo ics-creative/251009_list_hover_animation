@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>横にアイコンが表示される</title>
+  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <style>
+    .hover-01-01-list {
+      gap: 8px;
+    }
+
+    .hover-01-01-list::before {
+      content: "";
+      width: 16px;
+      height: 100%;
+      background-image: url("images/icon.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      transition: scale 0.2s;
+      scale: 0;
+    }
+
+    .hover-01-01-list:hover::before {
+      scale: 1;
+    }
+  </style>
+</head>
+
+<body>
+<ul class="hover-01-01">
+  <li class="hover-01-01-list"><a href="#">HOME</a></li>
+  <li class="hover-01-01-list"><a href="#">ABOUT US</a></li>
+  <li class="hover-01-01-list"><a href="#">PRODUCTS</a></li>
+  <li class="hover-01-01-list"><a href="#">COMPANY</a></li>
+  <li class="hover-01-01-list"><a href="#">CONTACT</a></li>
+</ul>
+</body>
+</html>
