@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>すべてのデモ</title>
+  <link href="../base.css" rel="stylesheet">
+  <style>
+    /* Google Fontsの読み込み */
+    @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+
+    body {
+      height: auto;
+      padding-block: 80px;
+    }
+    .wrapper {
+      display: grid;
+      gap: 30px;
+
+      p {
+        font-size: 18px;
+      }
+      &.hover-01-06-wrapper {
+        p {
+          color: #ffefb0;
+        }
+      }
+    }
+
+    .hover-01-01 {
+      .list {
+        gap: 8px;
+
+        &::before {
+          content: "";
+          width: 16px;
+          height: 100%;
+          background-image: url("images/icon.png");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          transition: scale 0.2s;
+          scale: 0;
+        }
+
+        &:hover::before {
+          scale: 1;
+        }
+      }
+    }
+
+    .hover-01-02 {
+      .link {
+        cursor: url("images/cursor.png") 8 8, pointer;
+      }
+    }
+
+    .hover-01-03 {
+      .link {
+        position: relative;
+
+        &::before,
+        &::after {
+          content: attr(data-text);
+          position: absolute;
+          opacity: 0;
+          pointer-events: none;
+          transition: transform 0.2s ease, opacity 0.2s ease;
+          inset: 0;
+        }
+
+        /* 左側にずれる */
+        &::before {
+          transform: translateX(10px);
+        }
+
+        /* 右側にずれる */
+        &::after {
+          transform: translateX(-10px);
+        }
+
+        /* ホバー時に中央に戻し、opacityを1にする */
+        &:hover::before,
+        &:hover::after {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
+
+    .hover-01-04 {
+      .list {
+        position: relative;
+        gap: 8px;
+
+        &::before,
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          transition: opacity .2s, transform .2s;
+        }
+
+        /* 通常時はハートの絵文字を表示 */
+        &::before {
+          background-image: url("images/heart-emoji.png");
+          opacity: 1;
+        }
+
+        /* ホバー時はドットのハートを表示 */
+        &::after {
+          position: absolute;
+          left: 0;
+          transform: scale(1);
+          background-image: url("images/heart-dot.svg");
+          opacity: 0;
+        }
+
+        /* ホバー時に切り替え */
+        &:hover {
+          &::before {
+            opacity: 0;
+          }
+          &::after {
+            transform: scale(1.4);
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .hover-01-05 {
+      .list {
+        position: relative;
+        border-radius: 50%;
+
+        /* 白い丸（mix-blend-mode: differenceによって実際には黒く表示される）を用意 */
+        &::after {
+          content: "";
+          position: absolute;
+          top: -8px;
+          left: -10px;
+          display: grid;
+          place-items: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: #ffffff;
+          transition: scale 0.2s;
+          scale: 0;
+          mix-blend-mode: difference; /* 差の絶対値 */
+        }
+
+        /* ホバー時に表示 */
+        &:hover::after {
+          scale: 1;
+        }
+      }
+    }
+
+    .hover-01-06-wrapper {
+      display: grid;
+      justify-content: center;
+      width: 100%;
+      padding: 40px 0;
+      background-color: #222222;
+    }
+
+    .hover-01-06 {
+      gap: 40px;
+
+      .link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: normal;
+        color: #ffffff;
+
+        /* 灯りのエフェクトを用意 */
+        &::after {
+          content: "";
+          position: absolute;
+          top: -3px;
+          left: -6px;
+          width: 30px;
+          height: 30px;
+          background: radial-gradient(50% 50% at 50% 50%, #ffdd40 0%, rgba(178, 230, 234, 0) 100%);
+          opacity: 0;
+          transition: opacity 0.3s;
+          mix-blend-mode: hard-light;
+        }
+
+        /* ホバー時に灯りがつく */
+        &:hover::after {
+          opacity: 1;
+        }
+
+        /* 電球のアイコンのときは灯りの位置とアイコンの大きさを調整 */
+        &.link-light {
+          &::after {
+            top: -7px;
+            left: -9px;
+          }
+          & .img {
+            height: 20px;
+          }
+        }
+      }
+
+      .img {
+        width: auto;
+        height: 16px;
+      }
+    }
+
+    .hover-01-07 {
+      font-family: "Dela Gothic One", sans-serif;
+      .link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: #000079;
+
+        /* ホバーで文字のアウトライン化 */
+        &:hover .text,
+        &:hover .numberButton {
+          color: #ffffff;
+          -webkit-text-stroke: 1px #000079;
+        }
+
+        /* ホバーでアイコンが回転 */
+        &:hover .rotatingSvg {
+          animation: rotate 7.0s linear infinite;
+        }
+      }
+
+      .text {
+        position: absolute;
+        left: 2.2em;
+        font-size: 1.8em;
+      }
+
+      .numberButton {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5em;
+        height: 5em;
+        padding-bottom: 2px;
+      }
+
+      .rotatingSvg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .numberInner {
+        z-index: 1;
+        display: grid;
+        align-items: flex-start;
+        line-height: 1;
+      }
+
+      .number {
+        padding-bottom: 0.2em;
+        font-size: 1.1em;
+        border-bottom: 0.2em solid #000079;
+      }
+    }
+
+    /* 回転アニメーション */
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hover-01-08 {
+      .link {
+        font-size: 1.2em;
+      }
+
+      /* PUDDINGのスタイル */
+      .pudding {
+        & .link {
+          display: flex;
+          gap: 6px;
+        }
+        & .imageWrap {
+          position: relative;
+          width: 30px;
+          height: 30px;
+        }
+        & .img {
+          position: absolute;
+        }
+        & .link {
+          & .img01 {
+            bottom: 4px;
+            z-index: -10;
+            width: 30px;
+          }
+          & .img02 {
+            bottom: -1px;
+            left: -3px;
+            z-index: -20;
+            width: 37px;
+          }
+        }
+
+        /* PUDDINGにアニメーションを適用 */
+        &:hover .link .img01 {
+          animation: pudding 0.45s ease;
+        }
+      }
+
+      /* PUDDING以外にアニメーションを適用 */
+      .list {
+        &:not(.pudding) .link:hover {
+          animation: monyun 0.45s;
+        }
+      }
+    }
+
+    /* 文字が震えるアニメーション */
+    @keyframes monyun {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      20% {
+        transform: translate(2px, -2px) rotate(2deg);
+      }
+      40% {
+        transform: translate(-2px, 2px) rotate(-2deg);
+      }
+      60% {
+        transform: translate(2px, -1px) rotate(1deg);
+      }
+      80% {
+        transform: translate(-1px, 1px) rotate(-1deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+    }
+
+    /* プリンが震えるアニメーション */
+    @keyframes pudding {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      20% {
+        transform: translate(1px, 0) rotate(2deg);
+      }
+      40% {
+        transform: translate(-1px, 0) rotate(-2deg);
+      }
+      60% {
+        transform: translate(1px, 0) rotate(1deg);
+      }
+      80% {
+        transform: translate(-1px, 0) rotate(-1deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+    }
+
+    .hover-01-09 {
+      gap: 14px;
+      font-family: "Dela Gothic One", sans-serif;
+
+      .list {
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -12px;
+          left: -3px;
+          width: 34px;
+          height: 24px;
+          transform: scale(0);
+          background-image: url("images/cat-black.png");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          transition: transform 0.2s ease;
+        }
+
+        /* 偶数番目のリストアイテムだけアイコンを変える */
+        &:nth-child(2n)::before {
+          background-image: url("images/cat-white.png");
+        }
+
+        &:hover::before {
+          transform: scale(1);
+        }
+      }
+
+      .link {
+        position: relative;
+        z-index: 1;
+
+        &::first-letter {
+          font-size: 2em;
+        }
+      }
+    }
+
+
+  </style>
+</head>
+
+<body>
+<div class="wrapper">
+  <p>1. 横にアイコンが表示される</p>
+  <ul class="hover-01-01">
+    <li class="list"><a href="#">HOME</a></li>
+    <li class="list"><a href="#">ABOUT US</a></li>
+    <li class="list"><a href="#">PRODUCTS</a></li>
+    <li class="list"><a href="#">COMPANY</a></li>
+    <li class="list"><a href="#">CONTACT</a></li>
+  </ul>
+</div>
+
+<div class="wrapper">
+  <p>2. カーソルが変化する</p>
+  <ul class="hover-01-02">
+    <li class="list"><a class="link" href="#">HOME</a></li>
+    <li class="list"><a class="link" href="#">ABOUT US</a></li>
+    <li class="list"><a class="link" href="#">PRODUCTS</a></li>
+    <li class="list"><a class="link" href="#">COMPANY</a></li>
+    <li class="list"><a class="link" href="#">CONTACT</a></li>
+  </ul>
+</div>
+
+<div class="wrapper">
+  <p>3. 文字がノイズ風にブレる</p>
+  <ul class="hover-01-03">
+    <li class="list"><a class="link" data-text="HOME" href="#">HOME</a></li>
+    <li class="list"><a class="link" data-text="ABOUT US" href="#">ABOUT US</a></li>
+    <li class="list"><a class="link" data-text="PRODUCTS" href="#">PRODUCTS</a></li>
+    <li class="list"><a class="link" data-text="COMPANY" href="#">COMPANY</a></li>
+    <li class="list"><a class="link" data-text="CONTACT" href="#">CONTACT</a></li>
+  </ul>
+</div>
+
+<div class="wrapper">
+  <p>4. アイコンが変化する</p>
+  <ul class="hover-01-04">
+    <li class="list"><a class="link" href="#">HOME</a></li>
+    <li class="list"><a class="link" href="#">ABOUT US</a></li>
+    <li class="list"><a class="link" href="#">PRODUCTS</a></li>
+    <li class="list"><a class="link" href="#">COMPANY</a></li>
+    <li class="list"><a class="link" href="#">CONTACT</a></li>
+  </ul>
+</div>
+
+<div class="wrapper">
+  <p>5. 黒丸が出現する</p>
+  <ul class="hover-01-05">
+    <li class="list"><a href="#">HOME</a></li>
+    <li class="list"><a href="#">ABOUT US</a></li>
+    <li class="list"><a href="#">PRODUCTS</a></li>
+    <li class="list"><a href="#">COMPANY</a></li>
+    <li class="list"><a href="#">CONTACT</a></li>
+  </ul>
+</div>
+
+<div class="wrapper hover-01-06-wrapper">
+  <p>6. 灯りがつく</p>
+  <ul class="hover-01-06">
+    <li class="list">
+      <a class="link" href="#">
+        <img alt="" aria-hidden="true" class="img" src="images/icon-star.svg">
+        わたしたち
+      </a>
+    </li>
+    <li class="list">
+      <a class="link" href="#">
+        <img alt="" aria-hidden="true" class="img" src="images/icon-star.svg">
+        商品 / サービス
+      </a>
+    </li>
+    <li class="list">
+      <a class="link" href="#">
+        <img alt="" aria-hidden="true" class="img" src="images/icon-star.svg">
+        よくある質問
+      </a>
+    </li>
+    <li class="list">
+      <a class="link link-light" href="#">
+        <img alt="" aria-hidden="true" class="img" src="images/icon-light.svg">
+        ヒント
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="wrapper">
+  <p>7. アイコンが回転する & 文字がアウトライン化する</p>
+  <ul class="hover-01-07">
+    <li class="list">
+      <a class="link" href="#">
+        <div class="numberButton">
+          <img alt="" aria-hidden="true" class="rotatingSvg" src="images/icon.svg">
+          <span class="numberInner">No.<span class="number">01</span></span>
+        </div>
+        <span class="text">HOME</span>
+      </a>
+    </li>
+    <li class="list">
+      <a class="link" href="#">
+        <div class="numberButton">
+          <img alt="" aria-hidden="true" class="rotatingSvg" src="images/icon.svg">
+          <span class="numberInner">No.<span class="number">02</span></span>
+        </div>
+        <span class="text">ABOUT</span>
+      </a>
+    </li>
+    <li class="list">
+      <a class="link" href="#">
+        <div class="numberButton">
+          <img alt="" aria-hidden="true" class="rotatingSvg" src="images/icon.svg">
+          <span class="numberInner">No.<span class="number">03</span></span>
+        </div>
+        <span class="text">SERVICE</span>
+      </a>
+    </li>
+    <li class="list">
+      <a class="link" href="#">
+        <div class="numberButton">
+          <img alt="" aria-hidden="true" class="rotatingSvg" src="images/icon.svg">
+          <span class="numberInner">No.<span class="number">04</span></span>
+        </div>
+        <span class="text">CONTACT</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="wrapper">
+  <p>8. 文字がかたかた動く</p>
+  <ul class="hover-01-08">
+    <li class="list"><a class="link" href="#">HOME</a></li>
+    <li class="list"><a class="link" href="#">ABOUT US</a></li>
+    <li class="list"><a class="link" href="#">PRODUCTS</a></li>
+    <li class="list"><a class="link" href="#">COMPANY</a></li>
+    <li class="list pudding">
+      <a class="link" href="#">
+        PUDDING
+        <span aria-label="プリンのイラスト" class="imageWrap">
+        <img alt="" class="img img01" src="images/icon-pudding.png">
+        <img alt="" class="img img02" src="images/icon-dish.png">
+      </span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="wrapper">
+  <p>9. ねこが出現する</p>
+  <ul class="hover-01-09">
+    <li class="list"><a class="link" href="#">HOME</a></li>
+    <li class="list"><a class="link" href="#">VENDORS</a></li>
+    <li class="list"><a class="link" href="#">NEWS</a></li>
+    <li class="list"><a class="link" href="#">COMPANY</a></li>
+    <li class="list"><a class="link" href="#">UNIQUE</a></li>
+  </ul>
+</div>
+</body>
+</html>
