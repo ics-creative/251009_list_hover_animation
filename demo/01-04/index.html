@@ -4,59 +4,62 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>アイコンが変化する</title>
-  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <link href="../base.css" rel="stylesheet"/>
   <style>
-    .hover-01-04-list {
-      position: relative;
-      gap: 8px;
-    }
+    .hover-01-04 {
+      .list {
+        position: relative;
+        gap: 8px;
 
-    .hover-01-04-list::before,
-    .hover-01-04-list::after {
-      content: "";
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      transition: opacity .2s, transform .2s;
-    }
+        &::before,
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          transition: opacity .2s, transform .2s;
+        }
 
-    /* 1つ目のアイコン */
-    .hover-01-04-list::before {
-      background-image: url("images/heart-emoji.png");
-      opacity: 1;
-    }
+        /* 通常時はハートの絵文字を表示 */
+        &::before {
+          background-image: url("images/heart-emoji.png");
+          opacity: 1;
+        }
 
-    /* 2つ目のアイコン */
-    .hover-01-04-list::after {
-      position: absolute;
-      left: 0;
-      transform: scale(1);
-      background-image: url("images/heart-dot.svg");
-      opacity: 0;
-    }
+        /* ホバー時はドットのハートを表示 */
+        &::after {
+          position: absolute;
+          left: 0;
+          transform: scale(1);
+          background-image: url("images/heart-dot.svg");
+          opacity: 0;
+        }
 
-    /* ホバー時にアイコンのopacityを切り替える */
-    .hover-01-04-list:hover::before {
-      opacity: 0;
-    }
-
-    .hover-01-04-list:hover::after {
-      transform: scale(1.4);
-      opacity: 1;
+        /* ホバー時に切り替え */
+        &:hover {
+          &::before {
+            opacity: 0;
+          }
+          &::after {
+            transform: scale(1.4);
+            opacity: 1;
+          }
+        }
+      }
     }
   </style>
 </head>
 
 <body>
 <ul class="hover-01-04">
-  <li class="hover-01-04-list"><a class="hover-01-04-link" href="#">HOME</a></li>
-  <li class="hover-01-04-list"><a class="hover-01-04-link" href="#">ABOUT US</a></li>
-  <li class="hover-01-04-list"><a class="hover-01-04-link" href="#">PRODUCTS</a></li>
-  <li class="hover-01-04-list"><a class="hover-01-04-link" href="#">COMPANY</a></li>
-  <li class="hover-01-04-list"><a class="hover-01-04-link" href="#">CONTACT</a></li>
+  <li class="list"><a class="link" href="#">HOME</a></li>
+  <li class="list"><a class="link" href="#">ABOUT US</a></li>
+  <li class="list"><a class="link" href="#">PRODUCTS</a></li>
+  <li class="list"><a class="link" href="#">COMPANY</a></li>
+  <li class="list"><a class="link" href="#">CONTACT</a></li>
 </ul>
 </body>
 </html>

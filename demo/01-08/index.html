@@ -4,49 +4,51 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>文字が震える</title>
-  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <link href="../base.css" rel="stylesheet"/>
   <style>
-    .hover-01-08-link {
+    .link {
       font-size: 1.2em;
-      color: #333333;
     }
 
-    .hover-01-08-list-pudding .hover-01-08-link {
-      display: flex;
-      gap: 4px;
-    }
+    /* PUDDINGのスタイル */
+    .pudding {
+      & .link {
+        display: flex;
+        gap: 6px;
+      }
+      & .imageWrap {
+        position: relative;
+        width: 30px;
+        height: 30px;
+      }
+      & .img {
+        position: absolute;
+      }
+      & .link {
+        & .img01 {
+          bottom: 4px;
+          z-index: -10;
+          width: 30px;
+        }
+        & .img02 {
+          bottom: -1px;
+          left: -3px;
+          z-index: -20;
+          width: 37px;
+        }
+      }
 
-    .hover-01-08-list-pudding .hover-01-08-imageWrap {
-      position: relative;
-      width: 30px;
-      height: 35px;
-    }
-
-    .hover-01-08-list-pudding .hover-01-08-img {
-      position: absolute;
-    }
-
-    .hover-01-08-list-pudding .hover-01-08-link .hover-01-08-img01 {
-      bottom: 6px;
-      z-index: -10;
-      width: 30px;
-    }
-
-    .hover-01-08-list-pudding .hover-01-08-link .hover-01-08-img02 {
-      bottom: 2px;
-      left: -4px;
-      z-index: -20;
-      width: 38px;
+      /* PUDDINGにアニメーションを適用 */
+      &:hover .link .img01 {
+        animation: pudding 0.45s ease;
+      }
     }
 
     /* PUDDING以外にアニメーションを適用 */
-    .hover-01-08-list:not(.hover-01-08-list-pudding) .hover-01-08-link:hover {
-      animation: monyun 0.45s;
-    }
-
-    /* PUDDINGにアニメーションを適用 */
-    .hover-01-08-list-pudding:hover .hover-01-08-link .hover-01-08-img01 {
-      animation: pudding 0.45s ease;
+    .list {
+      &:not(.pudding) .link:hover {
+        animation: monyun 0.45s;
+      }
     }
 
     /* 文字が震えるアニメーション */
@@ -97,16 +99,16 @@
 
 <body>
 <ul class="hover-01-08">
-  <li class="hover-01-08-list"><a class="hover-01-08-link" href="#">HOME</a></li>
-  <li class="hover-01-08-list"><a class="hover-01-08-link" href="#">ABOUT US</a></li>
-  <li class="hover-01-08-list"><a class="hover-01-08-link" href="#">PRODUCTS</a></li>
-  <li class="hover-01-08-list"><a class="hover-01-08-link" href="#">COMPANY</a></li>
-  <li class="hover-01-08-list hover-01-08-list-pudding">
-    <a class="hover-01-08-link" href="#">
+  <li class="list"><a class="link" href="#">HOME</a></li>
+  <li class="list"><a class="link" href="#">ABOUT US</a></li>
+  <li class="list"><a class="link" href="#">PRODUCTS</a></li>
+  <li class="list"><a class="link" href="#">COMPANY</a></li>
+  <li class="list pudding">
+    <a class="link" href="#">
       PUDDING
-      <span class="hover-01-08-imageWrap" aria-label="プリンのイラスト">
-        <img alt="" class="hover-01-08-img hover-01-08-img01" src="images/icon.svg">
-        <img alt="" class="hover-01-08-img hover-01-08-img02" src="images/icon02.png">
+      <span aria-label="プリンのイラスト" class="imageWrap">
+        <img alt="" class="img img01" src="images/icon-pudding.png">
+        <img alt="" class="img img02" src="images/icon-dish.png">
       </span>
     </a>
   </li>

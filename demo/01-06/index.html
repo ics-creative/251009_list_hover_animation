@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>灯りがつく</title>
-  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <link href="../base.css" rel="stylesheet"/>
   <style>
     body {
       background-color: #222222;
@@ -14,72 +14,77 @@
       gap: 40px;
     }
 
-    .hover-01-06-link {
+    .link {
       position: relative;
       display: flex;
       align-items: center;
       gap: 10px;
       font-weight: normal;
       color: #ffffff;
+
+      /* 灯りのエフェクトを用意 */
+      &::after {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: -6px;
+        width: 30px;
+        height: 30px;
+        background: radial-gradient(50% 50% at 50% 50%, #ffdd40 0%, rgba(178, 230, 234, 0) 100%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        mix-blend-mode: hard-light;
+      }
+
+      /* ホバー時に灯りがつく */
+      &:hover::after {
+        opacity: 1;
+      }
+
+      /* 電球のアイコンのときは灯りの位置とアイコンの大きさを調整 */
+      &.link-light {
+        &::after {
+          top: -7px;
+          left: -9px;
+        }
+        & .img {
+          height: 20px;
+        }
+      }
     }
 
-    .hover-01-06-link::after {
-      content: "";
-      position: absolute;
-      top: -3px;
-      left: -6px;
-      width: 30px;
-      height: 30px;
-      background: radial-gradient(50% 50% at 50% 50%, #ffdd40 0%, rgba(178, 230, 234, 0) 100%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      mix-blend-mode: hard-light;
-    }
-
-    .hover-01-06-link:hover::after {
-      opacity: 1;
-    }
-
-    .hover-01-06-img {
+    .img {
       width: auto;
       height: 16px;
     }
 
-    .hover-01-06-link-light::after {
-      top: -7px;
-      left: -9px;
-    }
-
-    .hover-01-06-link-light .hover-01-06-img {
-      height: 20px;
-    }
   </style>
 </head>
 <body>
 
 
 <ul class="hover-01-06">
-  <li class="hover-01-06-list">
-    <a class="hover-01-06-link" href="#">
-      <img alt="" class="hover-01-06-img" src="images/icon-star.svg" aria-hidden="true">
+  <li class="list">
+    <a class="link" href="#">
+      <img alt="" aria-hidden="true" class="img" src="images/icon-star.svg">
       わたしたち
     </a>
   </li>
-  <li class="hover-01-06-list">
-    <a class="hover-01-06-link" href="#">
-      <img alt="" class="hover-01-06-img" src="images/icon-star.svg" aria-hidden="true">
+  <li class="list">
+    <a class="link" href="#">
+      <img alt="" aria-hidden="true" class="img" src="images/icon-star.svg">
       商品 / サービス
     </a>
   </li>
-  <li class="hover-01-06-list">
-    <a class="hover-01-06-link" href="#">
-      <img alt="" class="hover-01-06-img" src="images/icon-star.svg" aria-hidden="true">
+  <li class="list">
+    <a class="link" href="#">
+      <img alt="" aria-hidden="true" class="img" src="images/icon-star.svg">
       よくある質問
     </a>
   </li>
-  <li class="hover-01-06-list">
-    <a class="hover-01-06-link hover-01-06-link-light" href="#">
-      <img alt="" class="hover-01-06-img" src="images/icon-light.svg" aria-hidden="true">
+  <li class="list">
+    <a class="link link-light" href="#">
+      <img alt="" aria-hidden="true" class="img" src="images/icon-light.svg">
       ヒント
     </a>
   </li>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>ねこが出現する</title>
-  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <link href="../base.css" rel="stylesheet"/>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
 
@@ -16,52 +16,52 @@
       gap: 14px;
     }
 
-    .hover-01-09-list {
+    .list {
       position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -12px;
+        left: -3px;
+        width: 34px;
+        height: 24px;
+        transform: scale(0);
+        background-image: url("images/cat-black.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transition: transform 0.2s ease;
+      }
+
+      /* 偶数番目のリストアイテムだけアイコンを変える */
+      &:nth-child(2n)::before {
+        background-image: url("images/cat-white.png");
+      }
+
+      &:hover::before {
+        transform: scale(1);
+      }
     }
 
-    .hover-01-09-link {
+    .link {
       position: relative;
       z-index: 1;
-    }
 
-    .hover-01-09-link::first-letter {
-      font-size: 2em;
-    }
-
-    .hover-01-09-list::before {
-      content: "";
-      position: absolute;
-      top: -12px;
-      left: -3px;
-      width: 34px;
-      height: 24px;
-      transform: scale(0);
-      background-image: url("images/cat-black.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      transition: transform 0.2s ease;
-    }
-
-    /* 偶数番目のリストアイテムだけアイコンを変える */
-    .hover-01-09-list:nth-child(2n)::before {
-      background-image: url("images/cat-white.png");
-    }
-
-    .hover-01-09-list:hover::before {
-      transform: scale(1);
+      &::first-letter {
+        font-size: 2em;
+      }
     }
   </style>
 </head>
 
 <body>
 <ul class="hover-01-09">
-  <li class="hover-01-09-list"><a class="hover-01-09-link" href="#">HOME</a></li>
-  <li class="hover-01-09-list"><a class="hover-01-09-link" href="#">VENDORS</a></li>
-  <li class="hover-01-09-list"><a class="hover-01-09-link" href="#">NEWS</a></li>
-  <li class="hover-01-09-list"><a class="hover-01-09-link" href="#">COMPANY</a></li>
-  <li class="hover-01-09-list"><a class="hover-01-09-link" href="#">UNIQUE</a></li>
+  <li class="list"><a class="link" href="#">HOME</a></li>
+  <li class="list"><a class="link" href="#">VENDORS</a></li>
+  <li class="list"><a class="link" href="#">NEWS</a></li>
+  <li class="list"><a class="link" href="#">COMPANY</a></li>
+  <li class="list"><a class="link" href="#">UNIQUE</a></li>
 </ul>
 </body>
 </html>

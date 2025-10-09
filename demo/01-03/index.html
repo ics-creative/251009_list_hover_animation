@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>文字がブレる</title>
-  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <link href="../base.css" rel="stylesheet"/>
   <style>
-    .hover-01-03-link {
+    .link {
       position: relative;
+
+      &::before,
+      &::after {
+        content: attr(data-text);
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+        inset: 0;
+      }
+
+      /* 左側にずれる */
+      &::before {
+        transform: translateX(10px);
+      }
+
+      /* 右側にずれる */
+      &::after {
+        transform: translateX(-10px);
+      }
+
+      /* ホバー時に中央に戻し、opacityを1にする */
+      &:hover::before,
+      &:hover::after {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
-    .hover-01-03-link::before,
-    .hover-01-03-link::after {
-      content: attr(data-text);
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-      pointer-events: none;
-    }
 
-    .hover-01-03-link::before {
-      transform: translateX(10px);
-    }
-
-    .hover-01-03-link::after {
-      transform: translateX(-10px);
-    }
-
-    .hover-01-03-link:hover::before,
-    .hover-01-03-link:hover::after {
-      opacity: 1;
-      transform: translateX(0);
-    }
   </style>
 </head>
 <body>
 <ul class="hover-01-03">
-  <li class="hover-01-03-list"><a class="hover-01-03-link" href="#" data-text="HOME">HOME</a></li>
-  <li class="hover-01-03-list"><a class="hover-01-03-link" href="#" data-text="ABOUT US">ABOUT US</a></li>
-  <li class="hover-01-03-list"><a class="hover-01-03-link" href="#" data-text="PRODUCTS">PRODUCTS</a></li>
-  <li class="hover-01-03-list"><a class="hover-01-03-link" href="#" data-text="COMPANY">COMPANY</a></li>
-  <li class="hover-01-03-list"><a class="hover-01-03-link" href="#" data-text="CONTACT">CONTACT</a></li>
+  <li class="list"><a class="link" data-text="HOME" href="#">HOME</a></li>
+  <li class="list"><a class="link" data-text="ABOUT US" href="#">ABOUT US</a></li>
+  <li class="list"><a class="link" data-text="PRODUCTS" href="#">PRODUCTS</a></li>
+  <li class="list"><a class="link" data-text="COMPANY" href="#">COMPANY</a></li>
+  <li class="list"><a class="link" data-text="CONTACT" href="#">CONTACT</a></li>
 </ul>
 </body>
 </html>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <title>アイコンが回転する & 文字がアウトライン化する</title>
-  <link href="../base.css" rel="stylesheet" type="text/css"/>
+  <link href="../base.css" rel="stylesheet"/>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
 
@@ -12,20 +12,32 @@
       font-family: "Dela Gothic One", sans-serif;
     }
 
-    .hover-01-07-link {
+    .link {
       position: relative;
       display: flex;
       align-items: center;
       color: #000079;
+
+      /* ホバーで文字のアウトライン化 */
+      &:hover .text,
+      &:hover .numberButton {
+        color: #ffffff;
+        -webkit-text-stroke: 1px #000079;
+      }
+
+      /* ホバーでアイコンが回転 */
+      &:hover .rotatingSvg {
+        animation: rotate 7.0s linear infinite;
+      }
     }
 
-    .hover-01-07-text {
+    .text {
       position: absolute;
       left: 2.2em;
       font-size: 1.8em;
     }
 
-    .hover-01-07-numberButton {
+    .numberButton {
       position: relative;
       display: flex;
       justify-content: center;
@@ -35,7 +47,7 @@
       padding-bottom: 2px;
     }
 
-    .hover-01-07-rotatingSvg {
+    .rotatingSvg {
       position: absolute;
       top: 0;
       left: 0;
@@ -44,28 +56,17 @@
       pointer-events: none;
     }
 
-    .hover-01-07-numberInner {
+    .numberInner {
       z-index: 1;
       display: grid;
       align-items: flex-start;
       line-height: 1;
     }
 
-    .hover-01-07-number {
+    .number {
       padding-bottom: 0.2em;
       font-size: 1.1em;
       border-bottom: 0.2em solid #000079;
-    }
-
-    .hover-01-07-link:hover .hover-01-07-text,
-    .hover-01-07-link:hover .hover-01-07-numberButton {
-      color: #ffffff;
-      -webkit-text-stroke: 1px #000079;
-    }
-
-    /* hover で回転 */
-    .hover-01-07-link:hover .hover-01-07-rotatingSvg {
-      animation: rotate 7.0s linear infinite;
     }
 
     /* 回転アニメーション */
@@ -77,46 +78,45 @@
         transform: rotate(360deg);
       }
     }
-
   </style>
 </head>
 
 <body>
 <ul class="hover-01-07">
-  <li class="hover-01-07-list">
-    <a class="hover-01-07-link" href="#">
-      <div class="hover-01-07-numberButton">
-        <img alt="" class="hover-01-07-rotatingSvg" src="images/icon.svg" aria-hidden="true">
-        <span class="hover-01-07-numberInner">No.<span class="hover-01-07-number">01</span></span>
+  <li class="list">
+    <a class="link" href="#">
+      <div class="numberButton">
+        <img alt="" aria-hidden="true" class="rotatingSvg" src="images/icon.svg">
+        <span class="numberInner">No.<span class="number">01</span></span>
       </div>
-      <span class="hover-01-07-text">HOME</span>
+      <span class="text">HOME</span>
     </a>
   </li>
-  <li class="hover-01-07-list">
-    <a class="hover-01-07-link" href="#">
-      <div class="hover-01-07-numberButton">
-        <img alt="" class="hover-01-07-rotatingSvg" src="images/icon.svg" aria-hidden="true">
-        <span class="hover-01-07-numberInner">No.<span class="hover-01-07-number">02</span></span>
+  <li class="list">
+    <a class="link" href="#">
+      <div class="numberButton">
+        <img alt="" aria-hidden="true" class="rotatingSvg" src="images/icon.svg">
+        <span class="numberInner">No.<span class="number">02</span></span>
       </div>
-      <span class="hover-01-07-text">ABOUT</span>
+      <span class="text">ABOUT</span>
     </a>
   </li>
-  <li class="hover-01-07-list">
-    <a class="hover-01-07-link" href="#">
-      <div class="hover-01-07-numberButton">
-        <img alt="" class="hover-01-07-rotatingSvg" src="images/icon.svg" aria-hidden="true">
-        <span class="hover-01-07-numberInner">No.<span class="hover-01-07-number">03</span></span>
+  <li class="list">
+    <a class="link" href="#">
+      <div class="numberButton">
+        <img alt="" aria-hidden="true" class="rotatingSvg" src="images/icon.svg">
+        <span class="numberInner">No.<span class="number">03</span></span>
       </div>
-      <span class="hover-01-07-text">SERVICE</span>
+      <span class="text">SERVICE</span>
     </a>
   </li>
-  <li class="hover-01-07-list">
-    <a class="hover-01-07-link" href="#">
-      <div class="hover-01-07-numberButton">
-        <img alt="" class="hover-01-07-rotatingSvg" src="images/icon.svg" aria-hidden="true">
-        <span class="hover-01-07-numberInner">No.<span class="hover-01-07-number">04</span></span>
+  <li class="list">
+    <a class="link" href="#">
+      <div class="numberButton">
+        <img alt="" aria-hidden="true" class="rotatingSvg" src="images/icon.svg">
+        <span class="numberInner">No.<span class="number">04</span></span>
       </div>
-      <span class="hover-01-07-text">CONTACT</span>
+      <span class="text">CONTACT</span>
     </a>
   </li>
 </ul>
