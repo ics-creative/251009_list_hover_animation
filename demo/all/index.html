@@ -66,24 +66,24 @@
           position: absolute;
           opacity: 0;
           pointer-events: none;
-          transition: transform 0.2s ease, opacity 0.2s ease;
+          transition: translate 0.2s ease, opacity 0.2s ease;
           inset: 0;
         }
 
         /* 左側にずれる */
         &::before {
-          transform: translateX(10px);
+          translate: 10px 0;
         }
 
         /* 右側にずれる */
         &::after {
-          transform: translateX(-10px);
+          translate: -10px 0;
         }
 
         /* ホバー時に中央に戻し、opacityを1にする */
         &:hover::before,
         &:hover::after {
-          transform: translateX(0);
+          translate: 0 0;
           opacity: 1;
         }
       }
@@ -103,7 +103,7 @@
           background-repeat: no-repeat;
           background-position: center;
           background-size: contain;
-          transition: opacity .2s, transform .2s;
+          transition: opacity .2s, scale .2s;
         }
 
         /* 通常時はハートの絵文字を表示 */
@@ -116,7 +116,7 @@
         &::after {
           position: absolute;
           left: 0;
-          transform: scale(1);
+          scale: 1;
           background-image: url("images/heart-dot.svg");
           opacity: 0;
         }
@@ -127,7 +127,7 @@
             opacity: 0;
           }
           &::after {
-            transform: scale(1.4);
+            scale: 1.4;
             opacity: 1;
           }
         }
@@ -282,10 +282,10 @@
     /* 回転アニメーション */
     @keyframes rotate {
       from {
-        transform: rotate(0deg);
+        rotate: 0deg;
       }
       to {
-        transform: rotate(360deg);
+        rotate: 360deg;
       }
     }
 
@@ -339,44 +339,56 @@
     /* 文字が震えるアニメーション */
     @keyframes monyun {
       0% {
-        transform: translate(0, 0) rotate(0deg);
+        translate: 0 0;
+        rotate: 0deg;
       }
       20% {
-        transform: translate(2px, -2px) rotate(2deg);
+        translate: 2px -2px;
+        rotate: 2deg;
       }
       40% {
-        transform: translate(-2px, 2px) rotate(-2deg);
+        translate: -2px 2px;
+        rotate: -2deg;
       }
       60% {
-        transform: translate(2px, -1px) rotate(1deg);
+        translate: 2px -1px;
+        rotate: 1deg;
       }
       80% {
-        transform: translate(-1px, 1px) rotate(-1deg);
+        translate: -1px 1px;
+        rotate: -1deg;
       }
       100% {
-        transform: translate(0, 0) rotate(0deg);
+        translate: 0 0;
+        rotate: 0deg;
       }
     }
 
     /* プリンが震えるアニメーション */
     @keyframes pudding {
       0% {
-        transform: translate(0, 0) rotate(0deg);
+        translate: 0 0;
+        rotate: 0deg;
       }
       20% {
-        transform: translate(1px, 0) rotate(2deg);
+        translate: 1px 0;
+        rotate: 2deg;
       }
       40% {
-        transform: translate(-1px, 0) rotate(-2deg);
+        translate: -1px 0;
+        rotate: -2deg;
       }
       60% {
-        transform: translate(1px, 0) rotate(1deg);
+        translate: 1px 0;
+        rotate: 1deg;
       }
       80% {
-        transform: translate(-1px, 0) rotate(-1deg);
+        translate: -1px 0;
+        rotate: -1deg;
       }
       100% {
-        transform: translate(0, 0) rotate(0deg);
+        translate: 0 0;
+        rotate: 0deg;
       }
     }
 
@@ -394,12 +406,12 @@
           left: -3px;
           width: 34px;
           height: 24px;
-          transform: scale(0);
+          scale: 0;
           background-image: url("images/cat-black.png");
           background-repeat: no-repeat;
           background-position: center;
           background-size: contain;
-          transition: transform 0.2s ease;
+          transition: scale 0.2s ease;
         }
 
         /* 偶数番目のリストアイテムだけアイコンを変える */
@@ -408,7 +420,7 @@
         }
 
         &:hover::before {
-          transform: scale(1);
+          scale: 1;
         }
       }
 

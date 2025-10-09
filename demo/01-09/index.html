@@ -26,12 +26,12 @@
         left: -3px;
         width: 34px;
         height: 24px;
-        transform: scale(0);
+        scale: 0;
         background-image: url("images/cat-black.png");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        transition: transform 0.2s ease;
+        transition: scale 0.2s ease;
       }
 
       /* 偶数番目のリストアイテムだけアイコンを変える */
@@ -40,7 +40,7 @@
       }
 
       &:hover::before {
-        transform: scale(1);
+        scale: 1;
       }
     }
 
